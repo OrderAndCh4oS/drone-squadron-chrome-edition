@@ -1,4 +1,4 @@
-import Squadron from '../squadron.js';
+import Squadron from '../game-object/squadron.js';
 import DroneFactory from './drone-factory.js';
 
 export default class SquadronFactory {

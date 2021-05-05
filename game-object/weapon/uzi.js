@@ -1,6 +1,6 @@
 import Weapon from '../abstract/weapon.js';
 import NineMM from '../ammo/nine-mm.js';
-import { context } from '../constants/constants.js';
+import { audioHandler, context } from '../../constants/constants.js';
 
 export default class Uzi extends Weapon {
     constructor(drone, x, y, angle, gimbal) {
@@ -22,4 +22,8 @@ export default class Uzi extends Weapon {
         context.resetTransform();
     }
 
+    fire() {
+        super.fire();
+        audioHandler.play('uzi', 0.3);
+    }
 }

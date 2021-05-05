@@ -1,5 +1,5 @@
 import Particle from './particle.js';
-import { context } from '../constants/constants.js';
+import { audioHandler, context } from '../../constants/constants.js';
 
 export default class Explosion extends Particle {
     constructor(id, x, y) {
@@ -9,6 +9,7 @@ export default class Explosion extends Particle {
         this._explosionImage.src = this._sprite;
         this._frame = 0;
         this._damage = 0;
+        audioHandler.play('explosion');
     }
 
     get damage() {

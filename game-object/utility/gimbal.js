@@ -1,5 +1,5 @@
-import Vector from '../service/vector.js';
-import { angleTo } from '../functions.js';
+import Vector from '../../service/vector.js';
+import { angleTo } from '../../functions.js';
 
 export default class Gimbal {
 

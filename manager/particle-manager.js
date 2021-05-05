@@ -2,7 +2,9 @@ import { didCollide, isOffCanvas } from '../functions.js';
 import { dm } from '../constants/constants.js';
 
 export default class ParticleManager {
-    constructor() {
+    particles = [];
+
+    init() {
         this.particles = [];
     }
 

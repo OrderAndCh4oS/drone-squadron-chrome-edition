@@ -1,4 +1,4 @@
-import { angleBetweenRange, angleTo, distanceTo } from '../functions.js';
+import { angleBetweenRange, angleTo, distanceTo } from '../../functions.js';
 
 export default class Steering {
     constructor(turningSpeed) {

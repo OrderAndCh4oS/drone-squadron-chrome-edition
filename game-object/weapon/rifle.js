@@ -1,5 +1,5 @@
 import Weapon from '../abstract/weapon.js';
-import { context } from '../constants/constants.js';
+import { audioHandler, context } from '../../constants/constants.js';
 import SevenSixTwoMM from '../ammo/seven-six-two-mm.js';
 
 export default class Rifle extends Weapon {
@@ -22,4 +22,8 @@ export default class Rifle extends Weapon {
         context.resetTransform();
     }
 
+    fire() {
+        super.fire();
+        audioHandler.play('rifle', 0.7);
+    }
 }

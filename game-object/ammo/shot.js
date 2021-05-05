@@ -2,6 +2,6 @@ import Bullet from '../abstract/bullet.js';
 
 export default class Shot extends Bullet {
     constructor(drone, x, y, angle, velocity) {
-        super(drone, x, y, 38, 0.5, angle, velocity, 1);
+        super(drone, x, y, 38, 2, angle, velocity, 1);
     }
 }

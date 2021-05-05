@@ -1,7 +1,7 @@
-import { context, pm } from '../constants/constants.js';
-import { deltaTime } from '../service/delta-time.js';
-import Vector from '../service/vector.js';
-import { angleTo } from '../functions.js';
+import { context, pm } from '../../constants/constants.js';
+import { deltaTime } from '../../service/delta-time.js';
+import Vector from '../../service/vector.js';
+import { angleTo } from '../../functions.js';
 
 export default class Weapon {
     constructor(drone, name, colour, x, y, angle, gimbal, round, fireRate) {

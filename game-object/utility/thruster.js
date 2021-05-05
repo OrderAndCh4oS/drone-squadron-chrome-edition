@@ -1,5 +1,5 @@
-import { angleBetweenRange, distanceTo } from '../functions.js';
-import { colours, context } from '../constants/constants.js';
+import { angleBetweenRange, distanceTo } from '../../functions.js';
+import { colours, context } from '../../constants/constants.js';
 
 export default class Thruster {
     constructor(thrust) {

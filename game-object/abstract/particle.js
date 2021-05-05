@@ -1,7 +1,7 @@
-import { colours, context, friction, grid } from '../constants/constants.js';
+import { colours, context, friction, grid } from '../../constants/constants.js';
 
-import Vector from '../service/vector.js';
-import { deltaTime } from '../service/delta-time.js';
+import Vector from '../../service/vector.js';
+import { deltaTime } from '../../service/delta-time.js';
 
 export default class Particle {
     constructor(id, x, y, speed, radius, angle) {

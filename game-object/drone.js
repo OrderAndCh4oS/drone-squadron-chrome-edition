@@ -1,11 +1,11 @@
-import { colours, context, debug } from './constants/constants.js';
-import Vector from './service/vector.js';
+import { colours, context, debug } from '../constants/constants.js';
+import Vector from '../service/vector.js';
 import Particle from './abstract/particle.js';
-import Health from './service/health.js';
-import { drones } from './constants/sprites.js';
-import { gimbals, scanners, steering, thrusters } from './constants/utilities.js';
-import { weapons } from './constants/weapons.js';
-import DisplayData from './user-interface/display-particle-data.js';
+import Health from '../service/health.js';
+import { drones } from '../constants/sprites.js';
+import { gimbals, scanners, steering, thrusters } from '../constants/utilities.js';
+import { weapons } from '../constants/weapons.js';
+import DisplayData from '../user-interface/display-particle-data.js';
 
 export default class Drone extends Particle {
     constructor(drone, squad, x, y, angle) {

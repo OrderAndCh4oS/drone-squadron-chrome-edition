@@ -1,6 +1,6 @@
-import Uzi from '../weapon/uzi.js';
-import Shotgun from '../weapon/shotgun.js';
-import Rifle from '../weapon/rifle.js';
+import Uzi from '../game-object/weapon/uzi.js';
+import Shotgun from '../game-object/weapon/shotgun.js';
+import Rifle from '../game-object/weapon/rifle.js';
 
 export const weapons = {
     'Uzi': Uzi,

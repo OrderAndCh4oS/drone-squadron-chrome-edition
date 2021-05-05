@@ -1,14 +1,16 @@
 import { returnToCanvas, shuffle } from '../functions.js';
-import Explosion from '../abstract/explosion.js';
+import Explosion from '../game-object/abstract/explosion.js';
 import { pm } from '../constants/constants.js';
 
 export default class DroneManager {
-    constructor() {
-        this._drones = [];
-    }
+    _drones = [];
 
     get drones() {
         return this._drones;
+    }
+
+    init() {
+        this._drones = [];
     }
 
     addDrone(drone) {

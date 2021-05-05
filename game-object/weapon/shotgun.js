@@ -1,5 +1,5 @@
 import Weapon from '../abstract/weapon.js';
-import { context, pm } from '../constants/constants.js';
+import { audioHandler, context, pm } from '../../constants/constants.js';
 import Shot from '../ammo/shot.js';
 
 export default class Shotgun extends Weapon {
@@ -35,5 +35,6 @@ export default class Shotgun extends Weapon {
                 ),
             );
         }
+        audioHandler.play('shotgun', 0.8);
     }
 }

@@ -1,7 +1,7 @@
-import { colours, context, debug, grid } from '../constants/constants.js';
+import { colours, context, debug, grid } from '../../constants/constants.js';
 import Drone from '../drone.js';
 import Bullet from '../abstract/bullet.js';
-import { angleTo } from '../functions.js';
+import { angleTo } from '../../functions.js';
 
 export default class Scanner {
     constructor(radius) {

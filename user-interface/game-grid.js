@@ -1,17 +1,20 @@
 import {
-    canvasHeight,
-    canvasWidth,
+    canvas,
     colours,
     context,
     debug,
 } from '../constants/constants.js';
-import Drone from '../drone.js';
+import Drone from '../game-object/drone.js';
 
 export default class GameGrid {
     constructor() {
+        this.init();
+    }
+
+    init() {
         this._gridBlockSize = 100;
-        this._columns = Math.round(canvasWidth / this._gridBlockSize);
-        this._rows = Math.round(canvasHeight / this._gridBlockSize);
+        this._columns = Math.round(canvas.width / this._gridBlockSize);
+        this._rows = Math.round(canvas.height / this._gridBlockSize);
         this._grid = new Array(this._columns);
         for(let i = 0; i < this._grid.length; i++) {
             this._grid[i] = new Array(this._rows);
@@ -128,14 +131,14 @@ export default class GameGrid {
                 context.fillText(i, i * this._gridBlockSize, 10);
                 context.beginPath();
                 context.moveTo(i * this._gridBlockSize, 0);
-                context.lineTo(i * this._gridBlockSize, canvasHeight);
+                context.lineTo(i * this._gridBlockSize, canvas.height);
                 context.stroke();
             }
             for(let i = 0; i < this._rows; i++) {
                 context.fillText(i, 0, i * this._gridBlockSize + 10);
                 context.beginPath();
                 context.moveTo(0, i * this._gridBlockSize);
-                context.lineTo(canvasWidth, i * this._gridBlockSize);
+                context.lineTo(canvas.width, i * this._gridBlockSize);
                 context.stroke();
             }
             context.setLineDash([0]);
