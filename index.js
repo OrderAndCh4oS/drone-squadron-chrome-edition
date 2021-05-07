@@ -14,6 +14,7 @@ import { deltaTime } from './service/delta-time.js';
 import SquadronFactory from './factory/squadron-factory.js';
 import UI from './user-interface/ui.js';
 import GameOver from './user-interface/display-game-over.js';
+import squadGenerator from './misc/squad-generator.js';
 
 let fpsInterval, startTime, now, then, elapsed;
 
@@ -45,14 +46,16 @@ async function initialise() {
     pm.init();
     grid.init();
     game.state = 'playing';
-    const squadJson = await fetch('./data/squads.json');
-    const squads = await squadJson.json();
-    setupDrones(squads.data);
+    setupDrones();
 }
 
-function setupDrones(data) {
+function setupDrones() {
+    const droneCount = ~~(canvas.width * 0.3)
     squadrons.splice(0, squadrons.length);
-    data.squadrons.map(s => squadrons.push(SquadronFactory.make(s)));
+    [
+        squadGenerator(1, "blue", ~~(canvas.width * 0.015)),
+        squadGenerator(2, "red", ~~(canvas.width * 0.015), droneCount)
+    ].map(s => squadrons.push(SquadronFactory.make(s)));
 }
 
 function startAnimating(fps) {
