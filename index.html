@@ -42,7 +42,7 @@
          ##############################################################################
  -->
 <head>
-    <title>Projectiles</title>
+    <title>Drone Squadron: Chrome</title>
     <style>
         html,
         body {
@@ -57,19 +57,21 @@
         }
 
         body {
-            padding: 0 0 ;
+            padding: 0 0;
             text-align: center;
         }
+
         .debug-bar {
             position: fixed;
             bottom: 0;
             width: 100%;
             height: 50px;
             background-color: rgba(49, 56, 64, 0.3);
-            display: flex;
+            display: none;
             align-items: center;
             justify-content: center;
         }
+
         .button {
             background-color: #345b77;
             color: floralwhite;
@@ -79,32 +81,57 @@
             cursor: pointer;
             transition: background-color 230ms ease-in-out;
         }
+
         .button:hover, .button:focus, .button:active {
             background-color: #313840;
             border: floralwhite dotted 1px;
             outline: none;
         }
+
         .button.toggled {
-            background-color: greenyellow;
+            background-color: #ffffff;
             color: #313840;
             border: floralwhite wave 1px;
         }
+
         .separator {
-            color: floralwhite;
+            color: #a5a5a5;
+        }
+
+        .start-button {
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            border: white 3px solid;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 12px;
+            font-size: 54px;
+            padding: 6px 10px 5px 20px;
+            background-color: transparent;
+        }
+
+        .start-button:hover, .start-button:focus, .start-button:active {
+            border: white 3px dashed;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
 <canvas id="canvas"></canvas>
-<div class="debug-bar">
-    <button id="play" class="button">Start</button>
+<button id="start-button" class="start-button">Play</button>
+<div id="debug-bar" class="debug-bar">
+    <button id="restart" class="button">Restart</button>
+    <button id="stop" class="button">Stop</button>
+    <span class="separator">|</span>
     <button id="game-grid-toggle" class="button">Grid</button>
     <button id="scanner-radius-toggle" class="button">Scanner Radius</button>
     <button id="scanner-path-toggle" class="button">Scanner Path</button>
     <button id="name-toggle" class="button">Names</button>
     <button id="data-toggle" class="button">Data</button>
-<!--    <span class="separator">|</span>-->
-<!--    <button id="game-grid-log" class="button">Log Grid</button>-->
+    <!--    <button id="game-grid-log" class="button">Log Grid</button>-->
 </div>
 <script type="module" src="index.js"></script>
 </body>

@@ -6,22 +6,44 @@ import {
     dm,
     game,
     grid,
-    playButton,
     pm,
+    restartButton,
     squadrons,
+    startButton,
+    stopButton,
 } from './constants/constants.js';
 import { deltaTime } from './service/delta-time.js';
 import SquadronFactory from './factory/squadron-factory.js';
 import UI from './user-interface/ui.js';
 import GameOver from './user-interface/display-game-over.js';
-import squadGenerator from './misc/squad-generator.js';
+import nDronesGenerator from './misc/n-drones-generator.js';
+import nameGenerator from './misc/name-generator.js';
 
 let fpsInterval, startTime, now, then, elapsed;
 
 debug.initialiseListeners();
 
-window.onresize = async () => {
+startButton.onclick = async function() {
+    startButton.style.display = 'none';
+    document.getElementById('debug-bar').style.display = 'flex';
     await initialise();
+};
+
+stopButton.onclick = () => {
+    game.state = 'stopped';
+    audioHandler.stop('music');
+    startButton.style.display = 'block';
+    document.getElementById('debug-bar').style.display = 'none';
+};
+
+window.onresize = async() => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    background.update();
+    background.draw();
+    if(game.state !== 'stopped') {
+        await initialise();
+    }
 };
 
 window.onload = async() => {
@@ -30,12 +52,11 @@ window.onload = async() => {
     await audioHandler.setAudioFile('shotgun', 'assets/audio/sound/shotgun_1.wav');
     await audioHandler.setAudioFile('rifle', 'assets/audio/sound/rifle_1.wav');
     await audioHandler.setAudioFile('music', 'assets/audio/music/Urban-Future.mp3', 'audio/mpeg');
-    startAnimating( 60);
+    startAnimating(60);
 };
 
-playButton.onclick = async() => {
+restartButton.onclick = async() => {
     await initialise();
-    playButton.innerText = 'Restart'
 };
 
 async function initialise() {
@@ -50,11 +71,17 @@ async function initialise() {
 }
 
 function setupDrones() {
-    const droneCount = ~~(canvas.width * 0.3)
     squadrons.splice(0, squadrons.length);
+    const drones = nDronesGenerator(~~(canvas.width * 0.009));
     [
-        squadGenerator(1, "blue", ~~(canvas.width * 0.015)),
-        squadGenerator(2, "red", ~~(canvas.width * 0.015), droneCount)
+        {
+            id: 1, colour: 'white', name: 'Squadron ' + nameGenerator(),
+            drones: drones.map((d, i) => ({id: i + 1, ...d})),
+        },
+        {
+            id: 2, colour: 'black', name: 'Squadron ' + nameGenerator(),
+            drones: drones.map((d, i) => ({id: i + drones.length + 1, ...d})),
+        },
     ].map(s => squadrons.push(SquadronFactory.make(s)));
 }
 

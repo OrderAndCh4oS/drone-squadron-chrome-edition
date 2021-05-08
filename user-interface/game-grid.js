@@ -50,14 +50,14 @@ export default class GameGrid {
         if(!this.gridHasKeys(particle.gridX, particle.gridY)) {
             return;
         }
-        this._grid[particle.gridX][particle.gridY].push(particle);
+        this._grid[particle.gridX][particle.gridY]?.push(particle);
     }
 
     removeParticle(particle) {
         if(!this.gridHasKeys(particle.gridX, particle.gridY)) {
             return;
         }
-        this._grid[particle.gridX][particle.gridY] = this._grid[particle.gridX][particle.gridY].filter(
+        this._grid[particle.gridX][particle.gridY] = this._grid[particle.gridX][particle.gridY]?.filter(
             (p) => p.id !== particle.id);
     }
 
@@ -113,8 +113,7 @@ export default class GameGrid {
                 for(let j = 0; j < this._grid[i].length; j++) {
                     for(let k = 0; k < this._grid[i][j].length; k++) {
                         const item = this._grid[i][j][k];
-                        const text = item instanceof Drone ? 'Drone:' +
-                            item.name : item.id;
+                        const text = item instanceof Drone ? item.name : item.id;
                         context.fillText(text, i * this._gridBlockSize + 4, j *
                             this._gridBlockSize + (10 * k + 14));
                     }

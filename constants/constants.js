@@ -10,15 +10,20 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 export const colours = {
-    black: '#2a2e34',
+    black: '#515151',
     white: '#b3dce2',
     orange: '#ffaa39',
     red: '#d20931',
-    green: '#80bf32',
-    blue: '#332be5',
+    greyOne: '#fafafa',
+    greyTwo: '#cdcdcd',
+    greyThree: '#8d8d8d',
+    green: '#c4c4c4',
+    blue: '#2b59e5',
 };
 
-export const playButton = document.getElementById('play');
+export const restartButton = document.getElementById('restart');
+export const stopButton = document.getElementById('stop');
+export const startButton = document.getElementById('start-button');
 export const game = {state: 'stopped'};
 export const friction = 0.8;
 export const context = canvas.getContext('2d');

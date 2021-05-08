@@ -8,7 +8,7 @@ export default class Gimbal {
         this.vector.setAngle(0);
         this.vector.setLength(5);
         this.rotation = 'right';
-        this._angleLimit = ((angleLimit * Math.PI) / 360.0) * 1.2;
+        this._angleLimit = angleLimit;
         this.turningSpeed = turningSpeed;
     }
 

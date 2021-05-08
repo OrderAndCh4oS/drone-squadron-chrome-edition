@@ -1,17 +1,23 @@
 import { canvas, context } from '../constants/constants.js';
 
 export default class Background {
+    _star;
+
     constructor() {
-        const star = new Image();
+        this._star = new Image();
+        this.update()
+    }
+
+    update() {
         const stars = [];
         for(let i = 0; i < 40; i++) {
             stars.push({
-                image: star,
+                image: this._star,
                 x: Math.floor(Math.random() * (canvas.width - 50) + 25),
                 y: Math.floor(Math.random() * (canvas.height - 50) + 25),
             });
         }
-        star.src = 'data:image/gif;base64,R0lGODdhBwAHAHcAACH5BAkKAAAALAAAAAAHAAcAwgAAAJaWlnl5eb29vdvb2wAAAAAAAAAAAAMRCBraMqKBFyWT4OYwyAialgAAOw==';
+        this._star.src = 'data:image/gif;base64,R0lGODdhBwAHAHcAACH5BAkKAAAALAAAAAAHAAcAwgAAAJaWlnl5eb29vdvb2wAAAAAAAAAAAAMRCBraMqKBFyWT4OYwyAialgAAOw==';
         this.background = {
             stars: stars,
         };
@@ -19,7 +25,7 @@ export default class Background {
 
     draw() {
         context.clearRect(0, 0, canvas.width, canvas.height);
-        context.fillStyle = '#1e1e26';
+        context.fillStyle = '#101010';
         context.fillRect(0, 0, canvas.width, canvas.height);
         for(let i = 0; i < this.background.stars.length; i++) {
             context.drawImage(

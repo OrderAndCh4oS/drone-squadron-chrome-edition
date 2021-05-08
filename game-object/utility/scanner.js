@@ -37,7 +37,7 @@ export default class Scanner {
         for(let i = this.gridRange.start[0]; i < this.gridRange.end[0]; i++) {
             for(let j = this.gridRange.start[1]; j <
             this.gridRange.end[1]; j++) {
-                grid.grid[i][j].map((item) => {
+                grid.grid[i][j]?.map((item) => {
                     this.detectThreats(item);
                     this.findNearestDrone(item);
                 });
